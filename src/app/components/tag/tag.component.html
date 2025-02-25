@@ -1,0 +1,11 @@
+<div class="tagsContainer">
+  <h2 class="text-gray-600 mb-6">Tags</h2>
+  <div
+    class="tag"
+    *ngFor="let tag of listaTags"
+    (click)="enviarTagSelecionada(tag)"
+  >
+    <img src="./../../../assets/tag.png" alt="ícone de etiqueta" class="mr-2" />
+    <h3>{{ tag }}</h3>
+  </div>
+</div>

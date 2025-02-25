@@ -1,0 +1,6 @@
+.tag {
+  @apply flex mb-4 cursor-pointer rounded-lg p-4;
+}
+.tag:hover {
+  background-color: rgb(201, 201, 201);
+}
