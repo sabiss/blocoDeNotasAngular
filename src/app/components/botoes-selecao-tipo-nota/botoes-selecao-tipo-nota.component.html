@@ -1,0 +1,39 @@
+<div class="botoesSelecaoTipoNotaContainer">
+  <div
+    class="botaoDeSelecaoDeNotas mb-8"
+    (click)="selecionar('todas')"
+    [ngClass]="{
+      selecionado: todasNotasSelecionado
+    }"
+  >
+    <div class="flex items-center">
+      <img src="./../../../assets/casa.png" alt="ícone de casa" />
+      <p class="ml-2">Todas as Notas</p>
+    </div>
+    <div class="seta">
+      <img
+        src="./../../../assets/setaNavBar.png"
+        alt="ícone de seta voltada para direita"
+      />
+    </div>
+  </div>
+
+  <div
+    class="botaoDeSelecaoDeNotas"
+    (click)="selecionar('arquivadas')"
+    [ngClass]="{
+      selecionado: !todasNotasSelecionado
+    }"
+  >
+    <div class="flex items-center">
+      <img src="./../../../assets/arquivo.png" alt="ícone de casa" />
+      <p class="ml-2">Notas Arquivadas</p>
+    </div>
+    <div class="seta">
+      <img
+        src="./../../../assets/setaNavBar.png"
+        alt="ícone de seta voltada para direita"
+      />
+    </div>
+  </div>
+</div>

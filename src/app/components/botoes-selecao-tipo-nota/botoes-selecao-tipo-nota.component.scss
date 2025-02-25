@@ -1,0 +1,18 @@
+.botoesSelecaoTipoNotaContainer {
+  @apply w-full flex flex-col justify-around border-b border-gray-300 border-solid mb-4;
+}
+
+.seta {
+  display: none;
+}
+
+.botaoDeSelecaoDeNotas:hover .seta {
+  display: block;
+}
+
+.selecionado {
+  background-color: #81d6e3;
+}
+.botaoDeSelecaoDeNotas {
+  @apply flex w-full justify-between cursor-pointer p-4 rounded-md;
+}
