@@ -1,1 +1,10 @@
-<p>navbar works!</p>
+<div class="navBar p-8">
+  <div class="flex items-center pb-6 w-full">
+    <img src="./../../../assets/caneta.png" alt="ícone de caneta" />
+    <h1 class="font-extrabold text-4xl">Notas</h1>
+  </div>
+  <app-botoes-selecao-tipo-nota
+    (tipoDeNotaSelecionada)="enviarTipoDeNotaSelecionadaParaExibir($event)"
+  ></app-botoes-selecao-tipo-nota>
+  <app-tag [listaTags]="listaTags"></app-tag>
+</div>
