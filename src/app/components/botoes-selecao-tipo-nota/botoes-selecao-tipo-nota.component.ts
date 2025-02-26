@@ -10,9 +10,16 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class BotoesSelecaoTipoNotaComponent {
   @Output() tipoDeNotaSelecionada = new EventEmitter<string>();
   todasNotasSelecionado: boolean = true;
+  notasArquivadas: boolean = false;
 
   selecionar(tipoNota: 'todas' | 'arquivadas') {
-    this.todasNotasSelecionado = !this.todasNotasSelecionado;
+    if (tipoNota == 'todas') {
+      this.todasNotasSelecionado = true;
+      this.notasArquivadas = false;
+    } else {
+      this.todasNotasSelecionado = false;
+      this.notasArquivadas = true;
+    }
     this.tipoDeNotaSelecionada.emit(tipoNota);
   }
 }
