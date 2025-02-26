@@ -6,7 +6,9 @@ import { DetalhesComponent } from './detalhes/detalhes.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NavnotasComponent } from './navnotas/navnotas.component';
 import { NotaComponent } from './nota/nota.component';
-import { BotoesacoesComponent } from './botoesacoes/botoesacoes.component';
+import { BotoesSelecaoTipoNotaComponent } from './botoes-selecao-tipo-nota/botoes-selecao-tipo-nota.component';
+import { TagComponent } from './tag/tag.component';
+import { BotoesAcoesNotaComponent } from './botoes-acoes-nota/botoes-acoes-nota.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { BotoesacoesComponent } from './botoesacoes/botoesacoes.component';
     NavbarComponent,
     NavnotasComponent,
     NotaComponent,
-    BotoesacoesComponent,
+    BotoesSelecaoTipoNotaComponent,
+    TagComponent,
+    BotoesAcoesNotaComponent,
   ],
   imports: [CommonModule],
   exports: [
@@ -30,7 +34,9 @@ import { BotoesacoesComponent } from './botoesacoes/botoesacoes.component';
     NavbarComponent,
     NavnotasComponent,
     NotaComponent,
-    BotoesacoesComponent,
+    BotoesSelecaoTipoNotaComponent,
+    TagComponent,
+    BotoesAcoesNotaComponent,
   ],
 })
 export class ComponentsModule {}
