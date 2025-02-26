@@ -1,0 +1,6 @@
+.colunas {
+  @apply flex flex-col gap-2 justify-start;
+}
+.notasInfos {
+  @apply border-2 border-x-0 border-y-0 border-r-2;
+}
