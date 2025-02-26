@@ -1,4 +1,4 @@
-export interface Nota {
+export interface INota {
   titulo: string;
   texto: string;
   tags: string[];
