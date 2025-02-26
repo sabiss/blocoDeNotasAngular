@@ -1,1 +1,24 @@
-<p>header works!</p>
+<div class="headerContainer flex justify-between pt-8 p-6 w-full">
+  <h1 class="font-bold text-4xl w-1/2">
+    {{ tipoDeNotasExibidas == "todas" ? "Todas As Notas" : "Notas Arquivadas" }}
+  </h1>
+
+  <div class="flex justify-evenly w-1/2">
+    <div
+      class="flex border-2 border-gray-400 border-solid rounded-lg justify-around"
+    >
+      <img
+        src="../../../assets/lupa.png"
+        alt="ícone de lupa para pesquisa"
+        class="mr-2 cursor-pointer"
+      />
+      <input type="text" placeholder="pesquise" class="w-4/5" />
+    </div>
+
+    <img
+      src="../../../assets/engrenagem.png"
+      alt="ícone de engrenagem"
+      class="cursor-pointer"
+    />
+  </div>
+</div>
