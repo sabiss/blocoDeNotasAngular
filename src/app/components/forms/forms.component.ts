@@ -40,6 +40,7 @@ export class FormsComponent {
       texto: this.textoNota,
       tags: this.tagsSelecionadas,
       data: this.dataNota,
+      arquivada: false,
     };
 
     this.enviarNotaParaLista.emit(nota);
