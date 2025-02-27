@@ -3,4 +3,5 @@ export interface INota {
   texto: string;
   tags: string[];
   data: Date;
+  arquivada: boolean;
 }
