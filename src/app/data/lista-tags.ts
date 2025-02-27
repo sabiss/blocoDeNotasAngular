@@ -1,9 +1,9 @@
 export const ListaDeTags: string[] = [
-  'Dev',
+  'Programação',
   'Estudos',
-  'Cozinha',
-  'Fitness',
+  'Trabalho',
+  'Casa',
+  'Compras',
   'Saúde',
-  'Shopping',
-  'TypeScript',
+  'Compromisso',
 ];
