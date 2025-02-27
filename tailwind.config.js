@@ -4,5 +4,13 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    function ({ addComponents }) {
+      addComponents({
+        ".border-box": {
+          boxSizing: "border-box",
+        },
+      });
+    },
+  ],
 };
