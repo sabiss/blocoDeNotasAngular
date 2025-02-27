@@ -1,0 +1,34 @@
+<div class="flex flex-col p-4 gap-5 justify-around">
+  <input
+    type="text"
+    class="input borda"
+    placeholder="TÍTULO"
+    [(ngModel)]="tituloNota"
+  />
+
+  <textarea
+    id="texto"
+    rows="5"
+    cols="50"
+    class="borda border-2"
+    placeholder="Digite seu texto..."
+    [(ngModel)]="textoNota"
+  ></textarea>
+  <div class="checkbox-container">
+    <div
+      *ngFor="let tag of tagsExistentes"
+      class="checkbox-item mb-2 flex items-center"
+    >
+      <input
+        type="checkbox"
+        [checked]="isChecked(tag)"
+        (change)="toggleTag(tag)"
+      />
+      <label [for]="tag" class="text-black ml-4">{{ tag }}</label>
+    </div>
+  </div>
+  <input type="date" class="input borda" [(ngModel)]="dataNota" />
+  <button class="bg-blue-500 text-white p-2 rounded-lg" (click)="criarNota()">
+    Criar
+  </button>
+</div>
