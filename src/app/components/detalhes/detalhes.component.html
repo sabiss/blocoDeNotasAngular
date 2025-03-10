@@ -1,5 +1,5 @@
 <div class="detalhesContaine p-6 flex h-full w-full borda border-2 border-y-0">
-  <div class="notasInfos w-2/3 borda flex flex-col gap-5 pr-4 overflow-y-auto">
+  <div class="notasInfos borda flex flex-col gap-6 pr-4 overflow-y-auto">
     <h1 class="text-3xl font-semibold">Olá</h1>
     <div class="grid grid-cols-2 mt-4 w-full">
       <div class="colunas">
@@ -27,6 +27,7 @@
         <p>24 Oct 2024</p>
       </div>
     </div>
+    <app-botoes-acoes-nota></app-botoes-acoes-nota>
     <p class="mt-4 text-justify">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
       totam deleniti at, quibusdam distinctio accusantium voluptate vero dolores
@@ -52,8 +53,8 @@
       architecto nostrum? Modi aliquid vitae recusandae provident temporibus
       dolore reiciendis aspernatur!
     </p>
-  </div>
-  <div class="botoes w-1/3 h-full p-4">
-    <app-botoes-acoes-nota></app-botoes-acoes-nota>
+    <button class="p-2 rounded-lg bg-blue-500" (click)="rolarPraCima()">
+      Voltar pra Cima
+    </button>
   </div>
 </div>
