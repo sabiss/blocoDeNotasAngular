@@ -10,4 +10,10 @@ import { INota } from '../../interfaces/nota';
 })
 export class DetalhesComponent {
   @Input() notaParaExibirDetalhes: INota = {} as INota;
+  rolarPraCima() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
 }
