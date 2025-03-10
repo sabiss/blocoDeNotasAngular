@@ -1,4 +1,4 @@
-<div class="navBar p-8">
+<div class="navBar p-8 bg-white">
   <div class="flex items-center pb-6 w-full">
     <img src="./../../../assets/caneta.png" alt="ícone de caneta" />
     <h1 class="font-extrabold text-4xl">Notas</h1>
@@ -6,5 +6,8 @@
   <app-botoes-selecao-tipo-nota
     (tipoDeNotaSelecionada)="enviarTipoDeNotaSelecionadaParaExibir($event)"
   ></app-botoes-selecao-tipo-nota>
-  <app-tag [listaTags]="listaTags"></app-tag>
+  <app-tag
+    [listaTags]="listaTags"
+    (tagParaFiltrar)="enviarTagParaFiltragemDeNotas($event)"
+  ></app-tag>
 </div>
