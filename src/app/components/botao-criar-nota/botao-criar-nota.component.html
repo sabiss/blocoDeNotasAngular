@@ -1,1 +1,7 @@
-<button class="botao">+ Criar Nota</button>
+<button
+  class="botao fixed bottom-5 right-5 z-[9999] p-2 bg-blue-500 text-white rounded-full"
+  (click)="abrirForms()"
+  *ngIf="!formsAberto"
+>
+  + Criar Nota
+</button>
