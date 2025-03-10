@@ -1,24 +1,25 @@
-<div class="headerContainer flex justify-between pt-8 p-6 w-full">
-  <h1 class="font-bold text-4xl w-1/2">
-    {{ tipoDeNotasExibidas == "todas" ? "Todas As Notas" : "Notas Arquivadas" }}
-  </h1>
-
-  <div class="flex justify-evenly w-1/2">
-    <div
-      class="flex border-2 border-gray-400 border-solid rounded-lg justify-around"
-    >
-      <img
-        src="../../../assets/lupa.png"
-        alt="ícone de lupa para pesquisa"
-        class="mr-2 cursor-pointer"
-      />
-      <input type="text" placeholder="pesquise" class="w-4/5" />
-    </div>
-
+<div class="headerContainer w-full flex p-8 md:hidden">
+  <div class="menuContainer w-1/3">
     <img
-      src="../../../assets/engrenagem.png"
-      alt="ícone de engrenagem"
+      src="../../../assets/menuHamburguer.png"
+      alt="ícone de menu"
       class="cursor-pointer"
+      (click)="toogleMenu()"
     />
+  </div>
+  <div
+    class="tituloInputContainer w-2/3 flex flex-col gap-5 items-center justify-between"
+  >
+    <h1 class="text-4xl font-medium">
+      {{ texto }}
+    </h1>
+    <div class="flex borda border-2 rounded-lg p-2">
+      <img src="../../../assets/lupa.png" alt="ícone de lupa" />
+      <input
+        type="text"
+        placeholder="pesquisar"
+        class="border-box w-full ml-5"
+      />
+    </div>
   </div>
 </div>
