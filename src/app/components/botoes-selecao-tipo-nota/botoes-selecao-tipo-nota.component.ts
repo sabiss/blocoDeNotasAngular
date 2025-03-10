@@ -8,16 +8,18 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrl: './botoes-selecao-tipo-nota.component.scss',
 })
 export class BotoesSelecaoTipoNotaComponent {
-  @Output() tipoDeNotaSelecionada = new EventEmitter<string>();
-  todasNotasSelecionado: boolean = true;
+  @Output() tipoDeNotaSelecionada = new EventEmitter<
+    'nao arquivadas' | 'arquivadas'
+  >();
+  notasNaoArquivadas: boolean = true;
   notasArquivadas: boolean = false;
 
-  selecionar(tipoNota: 'todas' | 'arquivadas') {
-    if (tipoNota == 'todas') {
-      this.todasNotasSelecionado = true;
+  selecionar(tipoNota: 'nao arquivadas' | 'arquivadas') {
+    if (tipoNota == 'nao arquivadas') {
+      this.notasNaoArquivadas = true;
       this.notasArquivadas = false;
     } else {
-      this.todasNotasSelecionado = false;
+      this.notasNaoArquivadas = false;
       this.notasArquivadas = true;
     }
     this.tipoDeNotaSelecionada.emit(tipoNota);
