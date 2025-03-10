@@ -1,12 +1,12 @@
 <div
-  class="card"
+  class="card mb-5"
   *ngFor="let nota of listaDeNotasParaExibir; let index"
   (click)="selecionarNota(nota)"
 >
   <h1 class="font-bold text-lg">{{ nota.titulo }}</h1>
   <div>
     <p
-      class="p-1 inline-block bg-gray-300 rounded-md break-words"
+      class="p-1 inline-block bg-gray-300 rounded-md break-words mr-2"
       *ngFor="let tag of nota.tags"
     >
       {{ tag }}
