@@ -19,7 +19,7 @@ export const ListaNotas = [
       'Escrever sobre as últimas tendências em desenvolvimento web e dicas de programação.',
     tags: ['Trabalho', 'Programação'],
     data: new Date(2023, 10, 22),
-    arquivada: false,
+    arquivada: true,
   },
   {
     titulo: 'Lembrete de Consulta',
