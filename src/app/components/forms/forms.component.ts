@@ -46,4 +46,7 @@ export class FormsComponent {
     this.enviarNotaParaLista.emit(nota);
     this.fecharForms.emit(false);
   }
+  fechar() {
+    this.fecharForms.emit(false);
+  }
 }
