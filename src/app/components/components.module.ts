@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
 import { BotaoCriarNotaComponent } from './botao-criar-nota/botao-criar-nota.component';
 import { HeaderComponent } from './header/header.component';
 import { DetalhesComponent } from './detalhes/detalhes.component';
@@ -9,6 +11,7 @@ import { NotaComponent } from './nota/nota.component';
 import { BotoesSelecaoTipoNotaComponent } from './botoes-selecao-tipo-nota/botoes-selecao-tipo-nota.component';
 import { TagComponent } from './tag/tag.component';
 import { BotoesAcoesNotaComponent } from './botoes-acoes-nota/botoes-acoes-nota.component';
+import { FormsComponent } from './forms/forms.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +26,9 @@ import { BotoesAcoesNotaComponent } from './botoes-acoes-nota/botoes-acoes-nota.
     BotoesSelecaoTipoNotaComponent,
     TagComponent,
     BotoesAcoesNotaComponent,
+    FormsComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   exports: [
     BotaoCriarNotaComponent,
     HeaderComponent,
@@ -37,6 +41,7 @@ import { BotoesAcoesNotaComponent } from './botoes-acoes-nota/botoes-acoes-nota.
     BotoesSelecaoTipoNotaComponent,
     TagComponent,
     BotoesAcoesNotaComponent,
+    FormsComponent,
   ],
 })
 export class ComponentsModule {}
