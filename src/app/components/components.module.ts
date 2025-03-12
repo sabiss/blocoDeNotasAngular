@@ -10,7 +10,6 @@ import { NavnotasComponent } from './navnotas/navnotas.component';
 import { NotaComponent } from './nota/nota.component';
 import { BotoesSelecaoTipoNotaComponent } from './botoes-selecao-tipo-nota/botoes-selecao-tipo-nota.component';
 import { TagComponent } from './tag/tag.component';
-import { BotoesAcoesNotaComponent } from './botoes-acoes-nota/botoes-acoes-nota.component';
 import { FormsComponent } from './forms/forms.component';
 
 @NgModule({
@@ -25,7 +24,6 @@ import { FormsComponent } from './forms/forms.component';
     NotaComponent,
     BotoesSelecaoTipoNotaComponent,
     TagComponent,
-    BotoesAcoesNotaComponent,
     FormsComponent,
   ],
   imports: [CommonModule, FormsModule],
@@ -40,7 +38,6 @@ import { FormsComponent } from './forms/forms.component';
     NotaComponent,
     BotoesSelecaoTipoNotaComponent,
     TagComponent,
-    BotoesAcoesNotaComponent,
     FormsComponent,
   ],
 })
