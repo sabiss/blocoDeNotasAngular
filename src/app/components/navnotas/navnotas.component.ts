@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { INota } from '../../interfaces/nota';
 
 @Component({
@@ -10,4 +10,9 @@ import { INota } from '../../interfaces/nota';
 })
 export class NavnotasComponent {
   @Input() listaDeNotasParaExibir: INota[] = [];
+  @Output() notaSelecionada = new EventEmitter<INota>();
+
+  enviarNota(nota: INota) {
+    this.notaSelecionada.emit(nota);
+  }
 }
