@@ -19,6 +19,8 @@
         type="text"
         placeholder="pesquisar"
         class="border-box w-full ml-5"
+        [(ngModel)]="textoDePesquisa"
+        (keyup)="pesquisar()"
       />
     </div>
   </div>

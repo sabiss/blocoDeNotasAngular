@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -8,11 +8,26 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit {
-  @Input() tipoDeNotasExibidas: string = '';
+  @Input() texto: string = '';
+  @Input() menuAberto: boolean = false;
+
+  @Output() sinalizarAbertudaNav = new EventEmitter<boolean>();
+  @Output() textoParaPesquisa = new EventEmitter<string>();
+
+  textoDePesquisa: string = '';
+
+  toogleMenu() {
+    this.menuAberto = !this.menuAberto;
+    this.sinalizarAbertudaNav.emit(this.menuAberto);
+  }
 
   ngOnInit(): void {
-    if (!this.tipoDeNotasExibidas) {
-      this.tipoDeNotasExibidas = 'todas';
+    if (!this.texto) {
+      this.texto = 'Todas as Notas';
     }
+  }
+
+  pesquisar() {
+    this.textoParaPesquisa.emit(this.textoDePesquisa);
   }
 }
