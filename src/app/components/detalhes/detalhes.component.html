@@ -1,6 +1,22 @@
-<div class="detalhesContaine p-6 flex h-full w-full borda border-2 border-y-0">
-  <div class="notasInfos borda flex flex-col gap-6 pr-4 overflow-y-auto">
-    <h1 class="text-3xl font-semibold">Olá</h1>
+<div
+  class="detalhesContaine flex h-full w-full borda border-2 border-y-0"
+  [ngStyle]="{
+    'background-color': notaParaExibirDetalhes.arquivada ? 'gray' : 'white'
+  }"
+>
+  <div class="notasInfos borda flex p-2 flex-col gap-6 overflow-y-auto">
+    <div class="flex justify-between">
+      <h1 class="text-3xl font-semibold">
+        {{ notaParaExibirDetalhes.titulo }}
+      </h1>
+      <img
+        src="..//../../assets/fechar.png"
+        alt="ícone de xis para fechar os detalhes da nota"
+        class="object-none"
+        (click)="fechar()"
+      />
+    </div>
+
     <div class="grid grid-cols-2 mt-4 w-full">
       <div class="colunas">
         <div class="flex mr-8">
@@ -16,42 +32,57 @@
           <img
             src="../../../assets/relogio.png"
             alt="ícone de etiqueta"
-            class="mr-4"
+            class="mr-4 object-none"
           />
           <p>Última Edição</p>
         </div>
       </div>
 
       <div class="colunas">
-        <p>Dev, React</p>
-        <p>24 Oct 2024</p>
+        <div class="flex flex-wrap items-center">
+          <span
+            *ngFor="let tag of notaParaExibirDetalhes.tags; let last = last"
+            class="mr-2"
+            >{{ tag }}{{ !last ? "," : " " }}
+          </span>
+        </div>
+
+        <p>{{ notaParaExibirDetalhes.data }}</p>
       </div>
     </div>
-    <app-botoes-acoes-nota></app-botoes-acoes-nota>
+    <div class="botoesAcoesNotaContainer flex flex-col gap-5">
+      <button
+        *ngIf="notaParaExibirDetalhes.arquivada"
+        class="botao borda"
+        (click)="processarNota('desarquivar', notaParaExibirDetalhes)"
+      >
+        <img
+          src="../../../assets/arquivo.png"
+          alt="ícone de pasta de arquivos"
+        />
+        <p>Desarquivar</p>
+      </button>
+      <button
+        *ngIf="!notaParaExibirDetalhes.arquivada"
+        class="botao borda"
+        (click)="processarNota('arquivar', notaParaExibirDetalhes)"
+      >
+        <img
+          src="../../../assets/arquivo.png"
+          alt="ícone de pasta de arquivos"
+        />
+        <p>Arquivar</p>
+      </button>
+      <button
+        class="botao borda"
+        (click)="processarNota('excluir', notaParaExibirDetalhes)"
+      >
+        <img src="../../../assets/lixo.png" alt="ícone de pasta de arquivos" />
+        <p>Excluir Nota</p>
+      </button>
+    </div>
     <p class="mt-4 text-justify">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
-      totam deleniti at, quibusdam distinctio accusantium voluptate vero dolores
-      aliquam eveniet similique porro quod animi, debitis voluptatibus
-      temporibus eius amet asperiores! Lorem ipsum dolor sit amet consectetur
-      adipisicing elit. Veritatis est deserunt, praesentium architecto corporis
-      aut! Recusandae distinctio obcaecati optio iusto aut harum molestiae
-      omnis! Ea iure numquam iste quidem animi. Lorem ipsum dolor sit amet
-      consectetur adipisicing elit. Optio, laudantium tempora, mollitia qui enim
-      magni expedita et sequi suscipit repellat sint recusandae placeat alias
-      possimus nesciunt, a dicta dolorum harum!Lorem Lorem ipsum dolor sit, amet
-      consectetur adipisicing elit. Dolor distinctio praesentium at id,
-      molestias atque ipsa quod magni nihil quisquam laborum porro magnam maxime
-      aliquid quasi eos voluptatibus architecto inventore Lorem ipsum dolor sit
-      amet consectetur adipisicing elit. Atque fuga eius nemo quia blanditiis
-      mollitia sunt omnis earum praesentium accusantium soluta autem voluptate,
-      ab voluptatem veritatis possimus dignissimos dolorum quae. Lorem ipsum
-      dolor sit amet consectetur adipisicing elit. Illo recusandae ipsum
-      doloribus? Nulla est ipsam inventore id nisi modi necessitatibus
-      architecto quisquam, ratione a sit nesciunt corporis velit, aspernatur
-      sunt? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa
-      sapiente repellat est fugit, ab iusto? Corporis modi minima nobis
-      architecto nostrum? Modi aliquid vitae recusandae provident temporibus
-      dolore reiciendis aspernatur!
+      {{ notaParaExibirDetalhes.texto }}
     </p>
     <button class="p-2 rounded-lg bg-blue-500" (click)="rolarPraCima()">
       Voltar pra Cima
