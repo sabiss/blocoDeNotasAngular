@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-tag',
@@ -9,6 +9,9 @@ import { Component, Input } from '@angular/core';
 })
 export class TagComponent {
   @Input({ required: true }) listaTags: string[] = [];
+  @Output() tagParaFiltrar = new EventEmitter<string>();
 
-  enviarTagSelecionada(tag: string) {}
+  enviarTagSelecionada(tag: string) {
+    this.tagParaFiltrar.emit(tag);
+  }
 }
