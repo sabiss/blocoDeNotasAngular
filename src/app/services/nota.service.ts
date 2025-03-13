@@ -38,27 +38,32 @@ export class NotaService {
     return listaFiltrada;
   };
 
-  arquivarNota = (nota: INota, listaDeNotas: INota[]) => {
-    listaDeNotas.filter((notaDaLista) => {
-      if (notaDaLista === nota) {
-        notaDaLista.arquivada = true;
+  arquivarNota = (notaParaArquivar: INota, listaDeNotas: INota[]) => {
+    for (let nota of listaDeNotas) {
+      if (nota == notaParaArquivar) {
+        nota.arquivada = true;
       }
-    });
-
-    const novaLista = this.excluirNota(nota);
-    return novaLista;
+    }
+    return listaDeNotas;
   };
 
   excluirNota = (nota: INota) => {
     return ListaNotas.filter((notaDaLista) => notaDaLista != nota);
   };
 
-  desarquivarNota = (nota: INota, listaDeNotas: INota[]) => {
-    listaDeNotas.filter((notaDaLista) => {
-      if (notaDaLista === nota) {
-        notaDaLista.arquivada = false;
+  desarquivarNota = (notaParaDesarquivar: INota, listaDeNotas: INota[]) => {
+    for (let nota of listaDeNotas) {
+      if (nota === notaParaDesarquivar) {
+        nota.arquivada = false;
       }
-    });
+    }
+    const notasArquivadas = listaDeNotas.filter(
+      (nota) => nota.arquivada === true
+    );
+    return notasArquivadas;
+  };
+  adicionarNota = (notaParaAdicionar: INota, listaDeNotas: INota[]) => {
+    listaDeNotas.unshift(notaParaAdicionar);
     return listaDeNotas;
   };
 }
