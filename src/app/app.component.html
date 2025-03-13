@@ -1,20 +1,46 @@
-<div class="flex h-dvh w-full">
-  <nav class="w-1/4">
+<div class="h-dvh">
+  <header>
+    <app-header
+      (sinalizarAbertudaNav)="changeNavbar($event)"
+      (textoParaPesquisa)="pesquisarPorNota($event)"
+      [texto]="textoDoHeader"
+      [menuAberto]="navbarAberta"
+    ></app-header>
+  </header>
+  <main class="flex flex-col p-4 relative">
     <app-navbar
-      (tipoDeNotaSelecionada)="enviarTipoDeNotasParaExibir($event)"
+      *ngIf="navbarAberta"
+      (fecharMenu)="changeNavbar($event)"
+      (tipoDeNotaSelecionada)="filtrarPorTipo($event)"
+      (tagParaFiltragemDeNotas)="filtrarPorTag($event)"
+      class="absolute w-full"
     ></app-navbar>
-  </nav>
-  <main class="w-3/4 h-full flex flex-col">
-    <header class="h-1/6 borda border-2 border-y-0">
-      <app-header [tipoDeNotasExibidas]="tipoDeNotaParaExibir"></app-header>
-    </header>
-    <div class="h-5/6 flex borda border-2">
-      <div class="w-1/3 h-full p-2">
-        <app-navnotas></app-navnotas>
-      </div>
-      <div class="w-2/3 h-full borda">
-        <app-detalhes></app-detalhes>
-      </div>
+    <app-botao-criar-nota
+      *ngIf="botaoCriarNota"
+      (mudarStatusForm)="changeForm($event)"
+      [formsAberto]="formsAberto"
+    ></app-botao-criar-nota>
+    <app-forms
+      *ngIf="formsAberto"
+      class="h-dvh"
+      [tagsExistentes]="listaDeTags"
+      (enviarNotaParaLista)="adicionarNota($event)"
+      (fecharForms)="changeForm($event)"
+    ></app-forms>
+    <div class="">
+      <app-navnotas
+        [listaDeNotasParaExibir]="listaDeNotasParaExibir"
+        *ngIf="notasAmostra"
+        (notaSelecionada)="mostrarDetalhesDaNota($event)"
+      ></app-navnotas>
+      <app-detalhes
+        *ngIf="detalhesAberto"
+        [notaParaExibirDetalhes]="detalhesDaNota"
+        (fecharDetalhes)="changeDetalhes($event)"
+        (arquivarDesarquivarOuExcluirNota)="
+          arquivarDesarquivarOuExcluirNota($event)
+        "
+      ></app-detalhes>
     </div>
   </main>
 </div>
