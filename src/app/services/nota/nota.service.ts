@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { INota } from '../interfaces/nota';
-import { ListaNotas } from '../data/lista-notas';
+import { INota } from '../../interfaces/nota';
+import { ListaNotas } from '../../data/lista-notas';
 
 @Injectable({
   providedIn: 'root',
