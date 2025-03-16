@@ -4,7 +4,7 @@ Este é um aplicativo de bloco de notas desenvolvido com Angular, projetado para
 
 ## Demonstração
 
-[Insira aqui o link para o seu vídeo de demonstração]
+[[Insira aqui o link para o seu vídeo de demonstração]](https://github.com/user-attachments/assets/6dd2f3a9-e04b-44c9-a11a-d3bb1a5e16af)
 
 ## Funcionalidades
 
