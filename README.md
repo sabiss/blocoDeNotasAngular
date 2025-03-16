@@ -29,7 +29,7 @@ Este é um aplicativo de bloco de notas desenvolvido com Angular, projetado para
 1.  **Clone o repositório:**
 
     ```bash
-    git clone [https://github.com/sabiss/blocoDeNotasAngular](https://github.com/sabiss/blocoDeNotasAngular)
+    git clone https://github.com/sabiss/blocoDeNotasAngular
     ```
 
 2.  **Instale as dependências:**
