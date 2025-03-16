@@ -1,5 +1,6 @@
 <div class="flex flex-col p-4 gap-5 justify-around">
-  <div class="flex justify-end mb-2" (click)="fechar()">
+  <h1 class="self-center font-semibold text-2xl">Crie Sua Nota</h1>
+  <div class="flex justify-end mb-2 cursor-pointer" (click)="fechar()">
     <img
       src="../../../assets/fechar.png"
       alt="ícone de xis para fechar o forms de cadastro de nota"
@@ -34,7 +35,6 @@
       <label [for]="tag" class="text-black ml-4">{{ tag }}</label>
     </div>
   </div>
-  <input type="date" class="input borda" [(ngModel)]="dataNota" />
   <button class="bg-blue-500 text-white p-2 rounded-lg" (click)="criarNota()">
     Criar
   </button>
