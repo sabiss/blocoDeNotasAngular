@@ -41,7 +41,7 @@ export class FormsComponent {
       tags: this.tagsSelecionadas,
       data: this.dataNota,
       arquivada: false,
-      excluido: false,
+      excluida: false,
     };
 
     this.enviarNotaParaLista.emit(nota);

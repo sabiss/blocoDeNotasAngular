@@ -13,9 +13,9 @@ export class NotaService {
     listaDeNotas: INota[]
   ) => {
     if (tipo === 'arquivadas') {
-      return listaDeNotas.filter((nota) => nota.arquivada && !nota.excluido);
+      return listaDeNotas.filter((nota) => nota.arquivada && !nota.excluida);
     } else {
-      return listaDeNotas.filter((nota) => !nota.arquivada && !nota.excluido);
+      return listaDeNotas.filter((nota) => !nota.arquivada && !nota.excluida);
     }
   };
 
@@ -73,10 +73,10 @@ export class NotaService {
     ); //trabalhar com o tipo de nota atual que o user está vendo
     for (let nota of listaDeTrabalho) {
       if (nota === notaParaExcluir) {
-        nota.excluido = true;
+        nota.excluida = true;
       }
     }
-    const notasNaoExcluidas = listaDeNotas.filter((nota) => !nota.excluido); //não exibir mais a excluída
+    const notasNaoExcluidas = listaDeNotas.filter((nota) => !nota.excluida); //não exibir mais a excluída
     return notasNaoExcluidas;
   };
 

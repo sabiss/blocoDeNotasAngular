@@ -6,7 +6,7 @@ export const ListaNotas = [
     tags: ['Trabalho', 'Projeto'],
     data: new Date(2023, 10, 20),
     arquivada: false,
-    excluido: false,
+    excluida: false,
   },
   {
     titulo: 'Lista de Compras',
@@ -14,7 +14,7 @@ export const ListaNotas = [
     tags: ['Casa', 'Compras'],
     data: new Date(2023, 10, 21),
     arquivada: false,
-    excluido: false,
+    excluida: false,
   },
   {
     titulo: 'Ideias para o Blog',
@@ -23,7 +23,7 @@ export const ListaNotas = [
     tags: ['Trabalho', 'Programação'],
     data: new Date(2023, 10, 22),
     arquivada: true,
-    excluido: false,
+    excluida: false,
   },
   {
     titulo: 'Lembrete de Consulta',
@@ -31,7 +31,7 @@ export const ListaNotas = [
     tags: ['Saúde', 'Compromisso'],
     data: new Date(2023, 10, 23),
     arquivada: false,
-    excluido: false,
+    excluida: false,
   },
   {
     titulo: 'Anotações do Curso',
@@ -40,6 +40,6 @@ export const ListaNotas = [
     tags: ['Estudos', 'Programação'],
     data: new Date(2023, 10, 24),
     arquivada: false,
-    excluido: false,
+    excluida: false,
   },
 ];
