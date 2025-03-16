@@ -13,26 +13,41 @@ export class NotaService {
     listaDeNotas: INota[]
   ) => {
     if (tipo === 'arquivadas') {
-      return listaDeNotas.filter((nota) => nota.arquivada);
+      return listaDeNotas.filter((nota) => nota.arquivada && !nota.excluido);
     } else {
-      return listaDeNotas.filter((nota) => nota.arquivada === false);
+      return listaDeNotas.filter((nota) => !nota.arquivada && !nota.excluido);
     }
   };
 
-  filtrarNotaPorTag = (tag: string, listaDeNotas: INota[]) => {
-    const listaFiltrada = listaDeNotas.filter(
-      (nota) => nota.tags.includes(tag) && !nota.arquivada
+  filtrarNotaPorTag = (
+    tag: string,
+    listaDeNotas: INota[],
+    tipoDeNotaExibidaNoMomento: 'nao arquivadas' | 'arquivadas'
+  ) => {
+    const listaParaTrabalho = this.filtrarNotaPorTipo(
+      tipoDeNotaExibidaNoMomento,
+      listaDeNotas
+    );
+    const listaFiltrada = listaParaTrabalho.filter((nota) =>
+      nota.tags.includes(tag)
     );
     return listaFiltrada;
   };
 
-  pesquisaDeNotas = (palavra: string, listaDeNotas: INota[]) => {
-    const listaFiltrada = listaDeNotas.filter((nota) => {
+  pesquisaDeNotas = (
+    palavra: string,
+    listaDeNotas: INota[],
+    tipoDeNotaParaPesquisar: 'nao arquivadas' | 'arquivadas'
+  ) => {
+    const listaParaPesquisa = this.filtrarNotaPorTipo(
+      tipoDeNotaParaPesquisar,
+      listaDeNotas
+    );
+
+    const listaFiltrada = listaParaPesquisa.filter((nota) => {
       return (
-        ((nota.titulo.toLowerCase().includes(palavra.toLowerCase()) &&
-          !nota.arquivada) ||
-          nota.texto.toLowerCase().includes(palavra.toLowerCase())) &&
-        !nota.arquivada
+        nota.titulo.toLowerCase().includes(palavra.toLowerCase()) ||
+        nota.texto.toLowerCase().includes(palavra.toLowerCase())
       );
     });
     return listaFiltrada;
@@ -47,8 +62,22 @@ export class NotaService {
     return listaDeNotas;
   };
 
-  excluirNota = (nota: INota) => {
-    return ListaNotas.filter((notaDaLista) => notaDaLista != nota);
+  excluirNota = (
+    notaParaExcluir: INota,
+    tipoDeNotaExibidaNoMomento: 'nao arquivadas' | 'arquivadas',
+    listaDeNotas: INota[]
+  ) => {
+    const listaDeTrabalho = this.filtrarNotaPorTipo(
+      tipoDeNotaExibidaNoMomento,
+      listaDeNotas
+    ); //trabalhar com o tipo de nota atual que o user está vendo
+    for (let nota of listaDeTrabalho) {
+      if (nota === notaParaExcluir) {
+        nota.excluido = true;
+      }
+    }
+    const notasNaoExcluidas = listaDeNotas.filter((nota) => !nota.excluido); //não exibir mais a excluída
+    return notasNaoExcluidas;
   };
 
   desarquivarNota = (notaParaDesarquivar: INota, listaDeNotas: INota[]) => {
@@ -57,10 +86,11 @@ export class NotaService {
         nota.arquivada = false;
       }
     }
-    const notasArquivadas = listaDeNotas.filter(
-      (nota) => nota.arquivada === true
+    const listaNotasArquivadas = this.filtrarNotaPorTipo(
+      'arquivadas',
+      listaDeNotas
     );
-    return notasArquivadas;
+    return listaNotasArquivadas; //retorna as arquivadas, pois so é possível desarquivar uma nota na aba de "notas arquivadas", então retorno as arquivadas para mostrar na navBar o restante das notas arquivadas
   };
   adicionarNota = (notaParaAdicionar: INota, listaDeNotas: INota[]) => {
     listaDeNotas.unshift(notaParaAdicionar);
