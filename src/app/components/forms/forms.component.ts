@@ -35,17 +35,25 @@ export class FormsComponent {
   }
 
   criarNota() {
-    const nota: INota = {
-      titulo: this.tituloNota,
-      texto: this.textoNota,
-      tags: this.tagsSelecionadas,
-      data: this.dataNota,
-      arquivada: false,
-      excluida: false,
-    };
+    if (
+      this.tituloNota == '' ||
+      this.textoNota == '' ||
+      this.tagsSelecionadas.length == 0
+    ) {
+      alert('Preenchar todos os campos da nota!');
+    } else {
+      const nota: INota = {
+        titulo: this.tituloNota,
+        texto: this.textoNota,
+        tags: this.tagsSelecionadas,
+        data: this.dataNota,
+        arquivada: false,
+        excluida: false,
+      };
 
-    this.enviarNotaParaLista.emit(nota);
-    this.fecharForms.emit(false);
+      this.enviarNotaParaLista.emit(nota);
+      this.fecharForms.emit(false);
+    }
   }
   fechar() {
     this.fecharForms.emit(false);
