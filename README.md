@@ -1,59 +1,54 @@
-# BlocoDeNotas
+# Bloco de Notas Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.6.
+Este é um aplicativo de bloco de notas desenvolvido com Angular, projetado para ser intuitivo e eficiente. Ele permite criar, editar, arquivar e organizar suas notas de maneira simples e rápida.
 
-## Development server
+## Demonstração
 
-To start a local development server, run:
+[Insira aqui o link para o seu vídeo de demonstração]
 
-```bash
-ng serve
-```
+## Funcionalidades
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **Criação e Edição de Notas:** Crie novas notas e edite as existentes com facilidade.
+- **Arquivamento de Notas:** Arquive notas que você não precisa mais na sua lista principal, mas que deseja manter.
+- **Organização por Tags:** Organize suas notas usando tags para facilitar a busca e o agrupamento.
+- **Pesquisa de Notas:** Encontre suas notas rapidamente usando a função de pesquisa.
+- **Interface Responsiva:** A interface se adapta a diferentes tamanhos de tela, proporcionando uma ótima experiência em dispositivos móveis e desktops.
+- **Filtro de Notas:** Filtre suas notas por tags ou tipo (arquivadas/não arquivadas).
+- **Armazenamento Local:** As notas são armazenadas localmente no navegador, garantindo que suas informações estejam sempre acessíveis.
 
-## Code scaffolding
+## Tecnologias Utilizadas
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- **Angular:** Framework JavaScript para construção de interfaces de usuário.
+- **TypeScript:** Linguagem de programação que adiciona tipagem estática ao JavaScript.
+- **Tailwind CSS:** Framework CSS utilitário para estilização rápida e responsiva.
+- **HTML5:** Linguagem de marcação para estruturação do conteúdo.
+- **SCSS:** Linguagem de estilo para estilização da interface.
 
-```bash
-ng generate component component-name
-```
+## Como Executar o Projeto
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+1.  **Clone o repositório:**
 
-```bash
-ng generate --help
-```
+    ```bash
+    git clone [https://github.com/sabiss/blocoDeNotasAngular](https://github.com/sabiss/blocoDeNotasAngular)
+    ```
 
-## Building
+2.  **Instale as dependências:**
 
-To build the project run:
+    ```bash
+    cd bloco-de-notas-angular
+    npm install
+    ```
 
-```bash
-ng build
-```
+3.  **Execute o aplicativo:**
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+    ```bash
+    ng serve
+    ```
 
-## Running unit tests
+4.  **Acesse o aplicativo:**
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+    Abra o navegador e acesse `http://localhost:4200/`.
 
-```bash
-ng test
-```
+## Contribuição
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Contribuições são sempre bem-vindas! Se você encontrar algum problema ou tiver sugestões de melhorias, sinta-se à vontade para abrir uma issue ou enviar um pull request.
