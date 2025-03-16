@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ElementRef,
+  HostListener,
+} from '@angular/core';
 import { INota } from '../../interfaces/nota';
 import { AcaoNota } from '../../interfaces/acao-nota';
 
@@ -10,9 +17,17 @@ import { AcaoNota } from '../../interfaces/acao-nota';
   styleUrl: './detalhes.component.scss',
 })
 export class DetalhesComponent {
+  constructor(private elementRef: ElementRef) {}
   @Input() notaParaExibirDetalhes: INota = {} as INota;
   @Output() fecharDetalhes = new EventEmitter<boolean>();
   @Output() arquivarDesarquivarOuExcluirNota = new EventEmitter<AcaoNota>();
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    if (!this.elementRef.nativeElement.contains(event.target)) {
+      this.fecharDetalhes.emit(false);
+    }
+  }
 
   fechar() {
     this.fecharDetalhes.emit(false);
