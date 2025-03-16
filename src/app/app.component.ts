@@ -125,7 +125,7 @@ export class AppComponent {
           this.tipoDeNotaExibidaNoMomento,
           this.listaDeNotas
         );
-        this.atualizarNotas();
+        this.changeDetalhes(false);
         break;
     }
   }
