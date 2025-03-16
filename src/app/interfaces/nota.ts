@@ -4,4 +4,5 @@ export interface INota {
   tags: string[];
   data: Date;
   arquivada: boolean;
+  excluido: boolean;
 }
