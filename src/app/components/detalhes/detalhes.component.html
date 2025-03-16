@@ -50,7 +50,10 @@
           </span>
         </div>
 
-        <p>{{ notaParaExibirDetalhes.data }}</p>
+        <p>
+          {{ notaParaExibirDetalhes.data | date : "dd/MM/yyyy" }} -
+          {{ notaParaExibirDetalhes.data | date : "HH:mm" }}
+        </p>
       </div>
     </div>
     <div class="botoesAcoesNotaContainer flex flex-col gap-5 xl:hidden">
