@@ -1,10 +1,11 @@
-import { Component, DoCheck } from '@angular/core';
+import { Component, HostListener, ElementRef } from '@angular/core';
 import { INota } from './interfaces/nota';
 import { ListaNotas } from './data/lista-notas';
 import { ListaDeTags } from './data/lista-tags';
 import { alterarTextoHeader } from './utils/header/texto-header';
 import { AcaoNota } from './interfaces/acao-nota';
-import { NotaService } from './services/nota.service';
+import { NotaService } from './services/nota/nota.service';
+import { TelaService } from './services/tela/tela.service';
 
 @Component({
   selector: 'app-root',
@@ -13,14 +14,18 @@ import { NotaService } from './services/nota.service';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  constructor(private notaService: NotaService) {}
+  constructor(
+    private notaService: NotaService,
+    private telaService: TelaService
+  ) {}
+
   listaDeNotas: INota[] = ListaNotas;
+  listaDeTags: string[] = ListaDeTags;
+
   listaDeNotasNaoArquivadas: INota[] = this.listaDeNotas.filter(
-    (nota) => nota.arquivada === false
+    (nota) => nota.arquivada === false && !nota.excluida
   );
   listaDeNotasParaExibir: INota[] = this.listaDeNotasNaoArquivadas;
-
-  listaDeTags: string[] = ListaDeTags;
 
   textoDoHeader: string = '';
   navbarAberta: boolean = false;
@@ -31,9 +36,15 @@ export class AppComponent {
 
   detalhesDaNota: INota = {} as INota;
 
+  tipoDeNotaExibidaNoMomento: 'arquivadas' | 'nao arquivadas' =
+    'nao arquivadas';
+
   changeForm(status: boolean) {
     this.formsAberto = status;
     this.changeNavNotas(!status);
+    // if (!this.telaService.telaPequena()) {
+    //   this.changeDetalhes(!status);
+    // }
   }
   changeNavbar(status: boolean) {
     this.navbarAberta = status;
@@ -47,10 +58,13 @@ export class AppComponent {
   }
   changeDetalhes(status: boolean) {
     this.detalhesAberto = status;
-    this.changeNavNotas(!status);
-    this.changeBotaoCriarNota(!status);
+    if (this.telaService.telaPequena()) {
+      this.changeNavNotas(!status);
+      this.changeBotaoCriarNota(!status);
+    }
   }
-  filtrarPorTipo(tipoDeNota: 'nao arquivadas' | 'arquivadas') {
+  filtrarPorTipo(tipoDeNota: 'arquivadas' | 'nao arquivadas') {
+    this.tipoDeNotaExibidaNoMomento = tipoDeNota; //vai ser usado na função de pesquisa, para saber se a pesquisar deve procurar nas notas arquivadas ou não arquivadas
     this.definirTextoDoHeader(tipoDeNota);
     this.listaDeNotasParaExibir = this.notaService.filtrarNotaPorTipo(
       tipoDeNota,
@@ -61,7 +75,8 @@ export class AppComponent {
   filtrarPorTag(tag: string) {
     this.listaDeNotasParaExibir = this.notaService.filtrarNotaPorTag(
       tag,
-      this.listaDeNotas
+      this.listaDeNotas,
+      this.tipoDeNotaExibidaNoMomento
     );
     this.changeNavbar(false);
   }
@@ -81,7 +96,8 @@ export class AppComponent {
   pesquisarPorNota(textoDePesquisa: string) {
     this.listaDeNotasParaExibir = this.notaService.pesquisaDeNotas(
       textoDePesquisa,
-      this.listaDeNotas
+      this.listaDeNotas,
+      this.tipoDeNotaExibidaNoMomento
     );
   }
   arquivarDesarquivarOuExcluirNota(acaoNota: AcaoNota) {
@@ -91,7 +107,8 @@ export class AppComponent {
           acaoNota.nota,
           this.listaDeNotas
         );
-        this.atualizarNotasArquivadas();
+        this.atualizarNotas();
+        this.changeDetalhes(false);
         break;
 
       case 'desarquivar':
@@ -99,23 +116,22 @@ export class AppComponent {
           acaoNota.nota,
           this.listaDeNotas
         );
-        console.log(
-          this.notaService.desarquivarNota(acaoNota.nota, this.listaDeNotas)
-        );
+        this.changeDetalhes(false);
         break;
 
       case 'excluir':
-        this.listaDeNotas,
-          (this.listaDeNotasParaExibir = this.notaService.excluirNota(
-            acaoNota.nota
-          ));
-        this.atualizarNotasArquivadas();
+        this.listaDeNotasParaExibir = this.notaService.excluirNota(
+          acaoNota.nota,
+          this.tipoDeNotaExibidaNoMomento,
+          this.listaDeNotas
+        );
+        this.atualizarNotas();
         break;
     }
   }
-  atualizarNotasArquivadas() {
+  atualizarNotas() {
     this.listaDeNotasNaoArquivadas = this.listaDeNotas.filter(
-      (nota) => nota.arquivada === false
+      (nota) => nota.arquivada === false && !nota.excluida
     );
     this.listaDeNotasParaExibir = this.listaDeNotasNaoArquivadas;
   }
