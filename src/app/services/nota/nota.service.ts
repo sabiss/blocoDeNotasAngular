@@ -76,7 +76,8 @@ export class NotaService {
         nota.excluida = true;
       }
     }
-    const notasNaoExcluidas = listaDeNotas.filter((nota) => !nota.excluida); //não exibir mais a excluída
+    const notasNaoExcluidas = listaDeTrabalho.filter((nota) => !nota.excluida); //não exibir mais a excluída
+    console.log(notasNaoExcluidas);
     return notasNaoExcluidas;
   };
 
