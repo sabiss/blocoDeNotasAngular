@@ -38,8 +38,7 @@
               }
             ],
             "styles": ["src/styles.scss"],
-            "scripts": [],
-            "baseHref": "/bloco_de_notas/"
+            "scripts": []
           },
           "configurations": {
             "production": {
